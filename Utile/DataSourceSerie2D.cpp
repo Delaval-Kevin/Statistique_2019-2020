@@ -21,6 +21,8 @@ DataSourceSerie2D::DataSourceSerie2D(char *nomFichier, int colonne1, int colonne
 	#ifdef DEBUG
 	TraceConstructeur("Appel au constructeur d'initialisation");
 	#endif
+	
+	Sujet2 = NULL;
 
 	InitDonnees(nomFichier, colonne1, colonne2);
 }	
@@ -129,6 +131,7 @@ void DataSourceSerie2D::InitDonnees(char *nomFichier, int colonne1, int colonne2
     	pch = strtok (NULL, ":");
     	cpt++;
   	}
+
     setSujet2(pch);
 
     std::getline(fichier, Tampon1); //Avoir la ligne des types
@@ -145,7 +148,7 @@ void DataSourceSerie2D::InitDonnees(char *nomFichier, int colonne1, int colonne2
 		setType2(1);
 	else
 		setType2(2);
-	
+
 	while(std::getline(fichier, Tampon1))  //avoir les ligne de valeur
 	{
 		cpt = 1;
@@ -156,7 +159,7 @@ void DataSourceSerie2D::InitDonnees(char *nomFichier, int colonne1, int colonne2
     		pch = strtok (NULL, ":");
     		cpt++;
   		}
-  		
+		
   		if(cpt == colonne1)
 			data.setVal1(atof(pch));
 		else
@@ -164,7 +167,7 @@ void DataSourceSerie2D::InitDonnees(char *nomFichier, int colonne1, int colonne2
 		
 		pch = strtok (NULL, ":");
 		cpt++;
-		
+
 		while (cpt != colonne1 && cpt != colonne2) //boucle pour avoir la seconde valeur
  		{
     		pch = strtok (NULL, ":");
@@ -175,7 +178,7 @@ void DataSourceSerie2D::InitDonnees(char *nomFichier, int colonne1, int colonne2
 			data.setVal1(atof(pch));
 		else
 			data.setVal2(atof(pch));
-			
+		
 		L->insere(data);
 	}
 

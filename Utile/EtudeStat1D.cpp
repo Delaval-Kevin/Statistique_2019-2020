@@ -392,6 +392,8 @@ void EtudeStat1D::CalculMediane()
 			positionTmp -= position; //pour avoir la position dans l'effectif de l'intervalle
 
 			positionTmp = ((Data1D)it).getEff() - positionTmp;
+			
+			cout << "position dans l'intervalle : " << positionTmp << endl;
 	
 			float medianeTmp;
 			medianeTmp = ((Data1D)it).getVal() + (( pC->getIntervalle() / ((Data1D)it).getEff() ) * positionTmp);
@@ -414,9 +416,11 @@ void EtudeStat1D::CalculMediane()
 			positionTmp -= position; //pour avoir la position dans l'effectif de l'intervalle
 
 			positionTmp = ((Data1D)it).getEff() - positionTmp;
+			
+			cout << "position dans l'intervalle : " << positionTmp << endl;
 	
 			float medianeTmp;
-			medianeTmp = ((Data1D)it).getVal() + (( pC->getIntervalle() / ((Data1D)it).getEff() ) * (positionTmp-1)) + ( (pC->getIntervalle() / ((Data1D)it).getEff()) / 2 );
+			medianeTmp = ((Data1D)it).getVal() + (( pC->getIntervalle() / ((Data1D)it).getEff() ) * (positionTmp));
 		
 			setMediane(medianeTmp);
 		}	    	
